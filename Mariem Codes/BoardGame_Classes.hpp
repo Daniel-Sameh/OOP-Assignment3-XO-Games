@@ -112,11 +112,6 @@ public:
     void display_board()override ;
 };
 
-class PyramicRandomPlayer:public RandomPlayer{
-public:
-    PyramicRandomPlayer(char symbol,int dimension );
-    void get_move(int &x, int &y,PyramicBoard &b) ;
-};
 ///////////////////////////////////////////
 class AiRandomPLayer:public PyramicRandomPlayer{
     AiRandomPLayer();
