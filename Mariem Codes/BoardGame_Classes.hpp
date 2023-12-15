@@ -113,7 +113,7 @@ public:
 };
 
 ///////////////////////////////////////////
-class AiRandomPLayer:public PyramicRandomPlayer{
+class AiRandomPLayer:public RandomPlayer{
     AiRandomPLayer();
 
 };
