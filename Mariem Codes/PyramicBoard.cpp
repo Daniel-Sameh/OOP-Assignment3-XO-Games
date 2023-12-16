@@ -54,6 +54,7 @@ bool PyramicBoard::isvalid(int x, int y) {
 
 void PyramicBoard::display_board() {
     for (int i=0;i<n_rows;i++) {
+                cout<<"|";
         for (int j=0;j<n_cols;j++) {
             if(isvalid(i,j))
                 cout << "(" << i << "," << j << ")";
