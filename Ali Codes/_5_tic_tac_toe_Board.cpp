@@ -114,7 +114,7 @@ bool _5_tic_tac_toe::is_winner() {
         }
     }
    //  cout <<os<<" "<<xs<<endl;
-xs=0,os=0;
+// xs=0,os=0;
     for (int i = 2; i < n_rows ; i++) {
         for (int j = 0; j < n_cols-2; j++) {
             if (board[i][j] == 'O') {
