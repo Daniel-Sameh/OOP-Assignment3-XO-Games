@@ -1,6 +1,8 @@
+//
+// Created by Mariam Essam on 12/7/2023.
+//
 
-
-#include "BoardGame_Classes.hpp"
+#include "include/BoardGame_Classes.hpp"
 #include <random>
 #include <iostream>
 #include <iomanip>
@@ -54,7 +56,6 @@ bool PyramicBoard::isvalid(int x, int y) {
 
 void PyramicBoard::display_board() {
     for (int i=0;i<n_rows;i++) {
-                cout<<"|";
         for (int j=0;j<n_cols;j++) {
             if(isvalid(i,j))
                 cout << "(" << i << "," << j << ")";
@@ -91,7 +92,18 @@ bool PyramicBoard::is_winner() {
     {return true;}
     return false;
 
-};
+}
+
+void PyramicBoard::reset(int x, int y) {
+    board[x][y]=0;
+    n_moves--;
+
+}
+
+
+
+
+
 
 
 
