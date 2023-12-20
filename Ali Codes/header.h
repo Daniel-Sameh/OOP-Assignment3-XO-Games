@@ -3,6 +3,7 @@
 //
 #include <string>
 #include <iostream>
+#include <vector>
 #ifndef TASK_2_HEADER_H
 #define TASK_2_HEADER_H
 using namespace std;
@@ -19,6 +20,8 @@ public:
     virtual void display_board() = 0;
     virtual bool game_is_over() = 0;
     virtual bool gameID()=0;
+    virtual char** get_board()=0;
+    virtual int get_n_moves()=0;
 };
 
 ///////////////////////////////////////////
@@ -34,9 +37,10 @@ public:
     bool is_draw();
     bool game_is_over();
     bool gameID();
+    char** get_board();
+    int get_n_moves();
     ~_5_tic_tac_toe();
 };
-
 ///////////////////////////////////////////
 
 class Player {
@@ -48,7 +52,7 @@ public:
 
     Player (char Symbol);
     Player (int order, char Symbol);
-    virtual void get_move(int& x, int& y);
+    virtual void get_move(int& x,int depth ,int& y,Board*ptr);
     string to_string();
     char get_symbol();
 };
@@ -58,18 +62,34 @@ protected:
     int dimension;
 public:
     RandomPlayer (char symbol, int dimension);
-    void get_move(int& x, int& y);
+    void get_move(int& x,int depth, int& y,Board*ptr);
 };
 
 ///////////////////////////////////////////
+class _5_tic_tac_toe_AIplayer:public Player{
+protected:
+    bool is_draw=false;
+    char  board[5][5];
+    Board* board_pointer;
+    int finalX,finalY;
+public:
+    _5_tic_tac_toe_AIplayer (char symbol);
+    void get_move(int& x, int depth,int& y,Board*ptr);
+    vector<pair<int,int>>get_x_cells();
+    void close_path(int &x,int &y,vector<pair<int,int>>& XS);
+    int best_move( int depth, bool ismin, int n_moves, bool first_call,int& coordinate_x,int& coordinate_y);
+    int check_for_winner(int n_moves);
+};
+///////////////////////////////////////////
 class GameManager {
-private:
+protected:
     Board* boardPtr;
     Player* players[2];
 public:
     GameManager(Board* b, Player* playerPtr[2]);
-    void run();
+    virtual void run();
 };
+
 
 #endif
 
