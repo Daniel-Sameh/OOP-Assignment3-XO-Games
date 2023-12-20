@@ -58,14 +58,14 @@ int _5_tic_tac_toe_AIplayer::check_for_winner(int n_moves) {
 
     for (int i = 0; i < n_rows - 2; i++) {
         for (int j = 0; j < n_cols - 2; j++) {
-            if (board[j][i] == 'O') {
+            if (board[i][j] == 'O') {
                 if ((i + 1 >= 0 && i + 1 < 5 && j + 1 >= 0 && j + 1 < 5) &&
                     (i + 2 >= 0 && i + 2 < 5 && j + 2 >= 0 && j + 2 < 5) && board[i + 1][j + 1] == board[i][j] &&
                     board[i + 2][j + 2] == board[i][j]) {
                     os++;
                 }
             }
-            if (board[j][i] == 'X') {
+            if (board[i][j] == 'X') {
                 if ((i + 1 >= 0 && i + 1 < 5 && j + 1 >= 0 && j + 1 < 5) &&
                     (i + 2 >= 0 && i + 2 < 5 && j + 2 >= 0 && j + 2 < 5) && board[i + 1][j + 1] == board[i][j] &&
                     board[i + 2][j + 2] == board[i][j]) {
