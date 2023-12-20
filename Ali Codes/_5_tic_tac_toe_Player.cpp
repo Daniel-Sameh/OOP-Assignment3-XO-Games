@@ -23,7 +23,7 @@ Player::Player (int order, char symbol) {
 }
 
 
-void Player::get_move (int& x, int& y) {
+void Player::get_move (int& x,int depth ,int& y,Board*ptr) {
     cout << "\nPlease enter your move x and y (0 to 5) separated by spaces: ";
     cin >> x >> y;
 }
