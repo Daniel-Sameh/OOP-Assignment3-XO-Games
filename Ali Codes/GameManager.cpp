@@ -13,13 +13,18 @@ void GameManager::run() {
     int x, y;
 
     boardPtr->display_board();
-
+    int depth_;
+    if(boardPtr->gameID()) depth_ = 10;
+    int add=0;
     while (!boardPtr->game_is_over()) {
         for (int i:{0,1}) {
-            players[i]->get_move(x, y);
+            players[i]->get_move(x,depth_, y,boardPtr);
             while (!boardPtr->update_board (x, y, players[i]->get_symbol())){
-                players[i]->get_move(x, y);
+                players[i]->get_move(x, depth_,y,boardPtr);
             }
+
+
+            cout<<"--------------------------------------";
             boardPtr->display_board();
             if(!boardPtr->gameID())
             {
@@ -32,6 +37,7 @@ void GameManager::run() {
                     return;
                 }
             }
+
         }
     }
     if(boardPtr->gameID()){
