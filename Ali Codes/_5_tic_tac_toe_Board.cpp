@@ -16,6 +16,14 @@ _5_tic_tac_toe::_5_tic_tac_toe () {
     }
 }
 //////////////////////////////////////////////////////////////
+char **_5_tic_tac_toe::get_board() {
+    return board;
+}
+//////////////////////////////////////////////////////////////
+int _5_tic_tac_toe::get_n_moves() {
+    return n_moves;
+}
+//////////////////////////////////////////////////////////////
 bool _5_tic_tac_toe::update_board (int x, int y, char mark){
     // Only update if move is valid
     if (!(x < 0 || x > 4 || y < 0 || y > 4) && (board[x][y] == 0)) {
@@ -42,10 +50,6 @@ void _5_tic_tac_toe::display_board()
 }
 //////////////////////////////////////////////////////////////
 bool _5_tic_tac_toe::is_winner() {
-    if (!game_is_over()) {
-        return false;
-    }
-
     for (int i = 0; i < n_rows; i++) {
         for (int j = 0; j < n_cols; j++) {
             if (board[i][j] == 'O') {
@@ -68,6 +72,7 @@ bool _5_tic_tac_toe::is_winner() {
             }
         }
     }
+//    cout<<os<<" "<<xs<<endl;
     //os=0,xs=0;
 //    cout <<os<<" "<<xs<<endl;
     for (int i = 0; i < n_rows; i++) {
@@ -92,7 +97,9 @@ bool _5_tic_tac_toe::is_winner() {
             }
         }
     }
-   // cout <<os<<" "<<xs<<endl;
+//    cout<<os<<" "<<xs<<endl;
+
+    // cout <<os<<" "<<xs<<endl;
    // os=0,xs=0;
 
     for (int i = 0; i < n_rows - 2; i++) {
@@ -113,8 +120,10 @@ bool _5_tic_tac_toe::is_winner() {
             }
         }
     }
-   //  cout <<os<<" "<<xs<<endl;
-// xs=0,os=0;
+//    cout<<os<<" "<<xs<<endl;
+
+    //  cout <<os<<" "<<xs<<endl;
+
     for (int i = 2; i < n_rows ; i++) {
         for (int j = 0; j < n_cols-2; j++) {
             if (board[i][j] == 'O') {
@@ -133,7 +142,7 @@ bool _5_tic_tac_toe::is_winner() {
             }
         }
     }
-
+//cout<<xs<<" "<<os <<endl;
     if (xs > os) {
         return true;
     }
@@ -155,4 +164,11 @@ bool _5_tic_tac_toe::gameID() {
 //////////////////////////////////////////////////////////////
 bool _5_tic_tac_toe::game_is_over() {
     return (n_moves>=24);
+}
+/////////////////////////////////////////////////////////////
+_5_tic_tac_toe::~_5_tic_tac_toe() {
+    for(int i=0;i<5;i++){
+       delete[] board[i];
+    }
+    delete[] board;
 }
