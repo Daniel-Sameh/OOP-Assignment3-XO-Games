@@ -39,6 +39,7 @@ int main() {
             p[0]=&o,p[1]=&b;
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         } else if (in == 2){
             Connect4Player o(0, '0');
             RandomPlayer b('x',7);
@@ -46,6 +47,7 @@ int main() {
             p[0]=&o,p[1]=&b;
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         }else if (in==3) {
             cout<<"Sorry unavailable AI for this game yet.\n";
         }else{
@@ -55,6 +57,7 @@ int main() {
             p[0]=&o,p[1]=&b;
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         }
 
     }else if (ch==2){
@@ -66,14 +69,23 @@ int main() {
             p[0]=new  Player (0, 'o'),p[1]=new Player (1, 'x');
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         } else if (in == 2){
 //            Player (0, 'o');
 //            PyramicRandomPlayer b('x',7);
             p[0]=new Player (0, 'o'),p[1]=new RandomPlayer ('x',5);
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         }else if (in==3) {
-            cout<<"Sorry unavailable AI for this game yet.\n";
+            //cout<<"Sorry unavailable AI for this game yet.\n";
+            PyramicAiPlayer o(&x,'o');
+            Player b(1,'x');
+            Player* p[2];
+            p[0]=&o,p[1]=&b;
+            GameManager gm(&x,p);
+            gm.run();
+            delete p[0], delete p[1];
         }else{
             RandomPlayer o('o',5);
             RandomPlayer b('x',5);
@@ -81,6 +93,7 @@ int main() {
             p[0]=&o,p[1]=&b;
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         }
     }else if (ch==3){
         cout << "Welcome to Daniel's Connect Four Game!\n";
@@ -93,6 +106,7 @@ int main() {
             p[0]=&o,p[1]=&b;
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         } else if (in == 2){
             Connect4Player o(0, '0');
             RandomPlayer b('x',7);
@@ -100,14 +114,17 @@ int main() {
             p[0]=&o,p[1]=&b;
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         }else if (in==3) {
-            cout<<"Sorry unavailable AI for this game yet.\n";
-//            AIConnect4Player o(&x,'o','x');
+//            cout<<"Sorry unavailable AI for this game yet.\n";
+//            AIConnect4Player o(x,'o','x');
 //            Connect4Player b(1,'x');
-//            Player* p[2];
+            Player* p[2];
 //            p[0]=&o,p[1]=&b;
-//            GameManager gm(&x,p);
-//            gm.run();
+            p[0]= new  AIConnect4Player (x,'o','x'), p[1]= new Connect4Player (1,'x');
+            GameManager gm(&x,p);
+            gm.run();
+            delete p[0], delete p[1];
         }else{
             RandomPlayer o('0',7);
             RandomPlayer b('x',7);
@@ -115,6 +132,7 @@ int main() {
             p[0]=&o,p[1]=&b;
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         }
 
     }else{
@@ -128,13 +146,21 @@ int main() {
             p[0] = &o, p[1] = &b;
             GameManager gm(&x, p);
             gm.run();
+            delete p[0], delete p[1];
         }else if (in==2){
             Player* p[2];
             p[0]=new Player (0, 'o'),p[1]=new RandomPlayer ('x',5);
             GameManager gm(&x,p);
             gm.run();
+            delete p[0], delete p[1];
         }else if (in==3){
-            cout<<"Sorry unavailable AI for this game yet.\n";
+            //cout<<"Sorry unavailable AI for this game yet.\n";
+            Player* p[2];
+            p[1]= new _5_tic_tac_toe_AIplayer (&x,'O');
+            p[0]=new Player (1,'X');
+            GameManager gm(&x,p);
+            gm.run();
+            delete p[0], delete p[1];
         }else{
             RandomPlayer o('o',5);
             RandomPlayer b('x',5);
@@ -142,7 +168,9 @@ int main() {
             p[0] = &o, p[1] = &b;
             GameManager gm(&x, p);
             gm.run();
+            delete p[0], delete p[1];
         }
     }
     system ("pause");
+
 }
